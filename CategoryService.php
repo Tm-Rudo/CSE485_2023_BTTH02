@@ -92,16 +92,15 @@ class CategoryService{
 
         header('location:index.php?controller=Category&action=list');
     }
-    public function countCategory():void{
+    public function countCategory(){
         // 4 bước thực hiện
         $dbConn = new DBConnection();
-        $conn = $dbConn->getConnection();
-        $id =$_GET['id'];
-    
+        $conn = $dbConn->getConnection();    
         $sql = "select count(*) from theloai";
 
         $stmt = $conn->query($sql);
-        
+        $category = $stmt->fetch();
+        return $category;
         //die($stmt);
         // Mảng (danh sách) các đối tượng Category Model
 
