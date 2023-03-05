@@ -10,16 +10,13 @@ class AuthorService{
         // B2. Truy vấn
         $sql = "select * from tacgia";
         $stmt = $conn->query($sql);
-
         // B3. Xử lý kết quả
         $authors = [];
         while($row = $stmt->fetch()){
             $author = new Author($row['ma_tgia'], $row['ten_tgia'],$row['hinh_tgia']);
             array_push($authors,$author);
         }
-
-
-        return $author;
+        return $authors;
     }
     public function getAuthor(){
         // 4 bước thực hiện
@@ -33,7 +30,7 @@ class AuthorService{
         // B3. Xử lý kết quả
 
         $row = $stmt->fetch();
-            $author = new Author($row['ma_tgia'], $row['ten_tgia'],$row['hinh_tgia']);
+        $author = new Author($row['ma_tgia'], $row['ten_tgia'],$row['hinh_tgia']);
 
 
         return $author;
@@ -43,10 +40,18 @@ class AuthorService{
         $dbConn = new DBConnection();
         $conn = $dbConn->getConnection();
         // B2. Truy vấn
-        $name = $_POST['txtAutName'];   
+        $name = $_POST['txtAutName']; 
 
-        $sql = "insert into tacgia(ten_tgia) 
-        values ('$name')";
+        $img = $_FILES['Image'];
+        $file_name = basename($img['name']);
+        $folder = 'assets/images/songs/';
+        $path_file = $folder . $file_name;
+        //die($path_file);
+        move_uploaded_file($img['tmp_name'], $path_file);
+
+        $sql = "insert into tacgia(ten_tgia, hinh_tgia) 
+        values ('$name', '$file_name')";
+
         $stmt = $conn->query($sql);
 
         // B3. Xử lý kết quả
@@ -59,10 +64,19 @@ class AuthorService{
         $conn = $dbConn->getConnection();
         // B2. Truy vấn
         $name = $_POST['txtAutName'];  
-        $id =$_POST['txtAutId'];
-    
+        $id =$_POST['id'];
+        // $id =$_POST['txtAutId'];
+        $img = $_FILES['Image_new'];
+        if($img['size']>0){
+            $file_name = basename($img['name']);
+            $folder = 'assets/images/songs/';
+            $path_file = $folder . $file_name;
+            move_uploaded_file($img['tmp_name'], $path_file);
+        }else{
+            $file_name = $_POST['Image_old'];
+        } 
         $sql = "UPDATE tacgia
-                SET ten_tgia = '$name'
+                SET ten_tgia = '$name', hinh_tgia = '$file_name'
                 WHERE ma_tgia = '$id';";
 
         $stmt = $conn->query($sql);

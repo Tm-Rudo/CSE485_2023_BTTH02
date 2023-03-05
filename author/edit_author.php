@@ -56,12 +56,22 @@
 
                 <div class="input-group mt-3 mb-3">
                         <span class="input-group-text" id="lblAutName">Tên tác giả</span>
-                        <input type="text" class="form-control" name="txtAutName"  value="<?= $author->getAuthor_Name() ?>">
+                        <input type="text" class="form-control" name="txtAutName"  value="<?= $author->getName() ?>">
                     </div>
 
-                    <div class="input-group mt-3 mb-3">
+                    <!-- <div class="input-group mt-3 mb-3">
                         <span class="input-group-text" id="Image">Hình ảnh tác giả</span>
-                            <input type="file" name="Image" value="<?= $author->getImage() ?>" >
+                            <input type="file" name="Image" value="< ?= $author->getImage() ?>" >
+                    </div> -->
+
+                    <div class="input-group mt-3 mb-3">
+                        <span class="input-group-text" id="lblAutName">Ảnh cũ</span>
+                        <img height="100" src="assets/images/songs/<?php echo $author->getImage() ?> " alt="">
+                        <input type="hidden" name="Image_old" value="<?php echo $author->getImage() ?>">
+                    </div>
+                    <div class="input-group mt-3 mb-3">
+                        <span class="input-group-text" id="lblAutName">Đổi ảnh</span>
+                        <input type="file" class="form-control" name="Image_new" >
                     </div>
 
                     <div class="form-group  float-end ">

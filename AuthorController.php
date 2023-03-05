@@ -8,14 +8,16 @@ class AuthorController{
         // Nhiệm vụ 1: Tương tác với Services/Models
         $authorService = new AuthorService();
         $authors = $authorService->getAllAuthor();
+         //die($authors);
         // Nhiệm vụ 2: Tương tác với View
         include("views/author/list_author.php");
     }
-
+     
     public function add(){
         // Nhiệm vụ 2: Tương tác với View
         include("views/author/add_author.php");
     }
+
     public function add_process(){
         // Nhiệm vụ 1: Tương tác với Services/Models
         $authorService = new AuthorService();
@@ -46,6 +48,6 @@ class AuthorController{
         // Nhiệm vụ 2: Tương tác với View
         include("views/author/edit_author.php");
     }
-    
-
+ 
 }
+

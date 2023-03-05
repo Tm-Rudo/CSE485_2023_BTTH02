@@ -67,8 +67,10 @@
             ?>
                 <tr>
                     <th scope="row"><?= $each->getId() ?></th>
-                    <th><?= $each->getAuthor_Name() ?></th>
-                    <th><?= $each->getImage() ?></th>
+                    <th><?= $each->getName() ?></th>
+                    <th>
+                        <img src="assets/images/songs/<?= $each->getImage() ?>" alt="" style="width:80px;height:100px;">
+                    </th>
                     <td>
                         <a href="?controller=Author&action=edit&id=<?=$each->getId()?>"><i class="fa-solid fa-pen-to-square"></i></a>
                     </td>

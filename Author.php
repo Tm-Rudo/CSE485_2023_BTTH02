@@ -2,13 +2,13 @@
 class Author{
     // Thuộc tính
     private $id;
-    private $author_name;
+    private $name;
     private $image; 
 
 
-    public function __construct($id, $author_name, $image){
+    public function __construct($id, $name, $image){
         $this->id = $id;
-        $this->author_name = $author_name;
+        $this->name = $name;
         $this->image = $image;
     }
 
@@ -18,8 +18,8 @@ class Author{
         return $this->id;
     }
 
-    public function getAuthor_Name(){
-        return $this->author_name;
+    public function getName(){
+        return $this->name;
     }
 
     public function getImage(){
@@ -31,8 +31,8 @@ class Author{
         $this->id = $id;
     }
 
-    public function setAuthor_Name($author_name) {
-        $this->author_name = $author_name;
+    public function setName($name) {
+        $this->name = $name;
       }
 
       public function setImage($image) {
