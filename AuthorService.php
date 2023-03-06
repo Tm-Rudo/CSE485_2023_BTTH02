@@ -65,24 +65,27 @@ class AuthorService{
         // B2. Truy vấn
         $name = $_POST['txtAutName'];  
         $id =$_POST['id'];
-        // $id =$_POST['txtAutId'];
         $img = $_FILES['Image_new'];
         if($img['size']>0){
             $file_name = basename($img['name']);
             $folder = 'assets/images/songs/';
             $path_file = $folder . $file_name;
+            //die($path_file);
             move_uploaded_file($img['tmp_name'], $path_file);
         }else{
             $file_name = $_POST['Image_old'];
-        } 
+            //die($file_name);
+        }
+        
         $sql = "UPDATE tacgia
                 SET ten_tgia = '$name', hinh_tgia = '$file_name'
                 WHERE ma_tgia = '$id';";
-
+        //die($sql);
         $stmt = $conn->query($sql);
 
-        header('location:index.php?controller=Author&action=list');
+        header('location:index.php?controller=author&action=list');
     }
+
     public function deleteAuthor():void{
         // 4 bước thực hiện
         $dbConn = new DBConnection();

@@ -21,20 +21,20 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="./">Trang chủ</a>
+                <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="?controller=home&action=index_admin">Trang chủ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../index.php">Trang ngoài</a>
+                        <a class="nav-link" href="?controller=home&action=index">Trang ngoài</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="category.php">Thể loại</a>
+                        <a class="nav-link " href="?controller=category&action=list">Thể loại</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active fw-bold" href="author.php">Tác giả</a>
+                        <a class="nav-link active fw-bold" href="?controller=Author&action=list">Tác giả</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="article.php">Bài viết</a>
+                        <a class="nav-link" href="?controller=Article&action=list">Bài viết</a>
                     </li>
                 </ul>
                 </div>
@@ -43,15 +43,15 @@
 
     </header>
     <main class="container mt-5 mb-5">
-        <!-- <h3 class="text-center text-uppercase mb-3 text-primary">CẢM NHẬN VỀ BÀI HÁT</h3> -->
+       
         <div class="row">
             <div class="col-sm">
                 <h3 class="text-center text-uppercase fw-bold">Sửa thông tin tác giả</h3>
-                <form action="?controller=author&action=update" enctype="multipart/form-data">
-
+                <form action="?controller=author&action=update" method="post" enctype="multipart/form-data">
+                
                 <div class="input-group mt-3 mb-3">
                         <span class="input-group-text" id="lblAutId">Mã tác giả</span>
-                        <input type="text" class="form-control" name="txtAutId" readonly value="<?= $author->getId() ?>" >
+                        <input type="text" class="form-control" name="id" readonly value="<?= $author->getId() ?>" >
                     </div>
 
                 <div class="input-group mt-3 mb-3">
@@ -75,8 +75,8 @@
                     </div>
 
                     <div class="form-group  float-end ">
-                        <input type="submit" value="Lưu lại" class="btn btn-success">
-                        <a href="author.php" class="btn btn-warning ">Quay lại</a>
+                        <input type="submit" value="Sửa" class="btn btn-success">
+                        <a href="?controller=Author&action=list" class="btn btn-warning ">Quay lại</a>
                     </div>
                 </form>
             </div>
