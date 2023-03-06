@@ -108,6 +108,7 @@ class AuthorService{
         $sql = "select count(*) from tacgia";
 
         $stmt = $conn->query($sql);
-
+        $author = $stmt->fetch();
+        return $author;
     }
 }
